@@ -31,6 +31,11 @@ hi htmlTag           guifg=white       guibg=NONE        gui=NONE      ctermfg=c
 hi htmlTagName       guifg=white       guibg=NONE        gui=NONE      ctermfg=yellow      ctermbg=NONE        cterm=NONE
 hi htmlEndTag        guifg=white       guibg=NONE        gui=NONE      ctermfg=cyan        ctermbg=NONE        cterm=NONE
 hi htmlLink          guifg=white       guibg=NONE        gui=NONE      ctermfg=white       ctermbg=NONE        cterm=NONE
+hi htmlArg           guifg=white       guibg=NONE        gui=NONE      ctermfg=cyan        ctermbg=NONE        cterm=NONE
+
+" Special for twig
+hi twigString        guifg=white       guibg=NONE        gui=NONE      ctermfg=green       ctermbg=NONE        cterm=NONE
+
 
 " Special for PHP
 hi link phpIdentifier identifier
