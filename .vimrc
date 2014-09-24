@@ -60,10 +60,38 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 "------------------------------------------------------------------------------"
 "--------------------------------- Plugins ------------------------------------"
 "------------------------------------------------------------------------------"
-"NerdTree
+"
+"--------------------------------- NerdTree -----------------------------------"
 nnoremap <leader>n :NERDTreeToggle<cr>
 "Snipmate
 filetype plugin on
+
+"--------------------------------- PHP GetSet ---------------------------------"
+let b:phpgetset_getterTemplate = 
+  \ "\t\n" .
+  \ "\t/**\n" .
+  \ "\t * Get %varname%.\n" .
+  \ "\t *\n" .
+  \ "\t * @return %varname%.\n" .
+  \ "\t */\n" .
+  \ "\tpublic function %funcname%()\n" .
+  \ "\t{\n" .
+  \ "\t    return $this->%varname%;\n" .
+  \ "\t}"
+
+let b:phpgetset_setterTemplate = 
+  \ "\t\n" .
+  \ "\t/**\n" .
+  \ "\t * Set %varname%.\n" .
+  \ "\t *\n" .
+  \ "\t * @param %varname% the value to set.\n" . 
+  \ "\t */\n" .
+  \ "\tpublic function %funcname%($%varname%)\n" .
+  \ "\t{\n" .
+  \ "\t    $this->%varname% = $%varname%;\n" .
+  \ "\t\n" .
+  \ "\t    return $this;\n" .
+  \ "\t}"
 
 "------------------------------------------------------------------------------"
 "--------------------------------- Filetypes ----------------------------------"
