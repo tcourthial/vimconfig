@@ -68,30 +68,29 @@ filetype plugin on
 
 "--------------------------------- PHP GetSet ---------------------------------"
 let b:phpgetset_getterTemplate = 
-  \ "\t\n" .
-  \ "\t/**\n" .
-  \ "\t * Get %varname%.\n" .
-  \ "\t *\n" .
-  \ "\t * @return %varname%.\n" .
-  \ "\t */\n" .
-  \ "\tpublic function %funcname%()\n" .
-  \ "\t{\n" .
-  \ "\t    return $this->%varname%;\n" .
-  \ "\t}"
+  \ "    \n" .
+  \ "    /**\n" .
+  \ "     * Get %varname%.\n" .
+  \ "     *\n" .
+  \ "     * @return %varname%.\n" .
+  \ "     */\n" .
+  \ "    public function %funcname%()\n" .
+  \ "    {\n" .
+  \ "        return $this->%varname%;\n" .
+  \ "    }"
 
 let b:phpgetset_setterTemplate = 
-  \ "\t\n" .
-  \ "\t/**\n" .
-  \ "\t * Set %varname%.\n" .
-  \ "\t *\n" .
-  \ "\t * @param %varname% the value to set.\n" . 
-  \ "\t */\n" .
-  \ "\tpublic function %funcname%($%varname%)\n" .
-  \ "\t{\n" .
-  \ "\t    $this->%varname% = $%varname%;\n" .
-  \ "\t\n" .
-  \ "\t    return $this;\n" .
-  \ "\t}"
+  \ "    \n" .
+  \ "    /**\n" .
+  \ "     * Set %varname%.\n" .
+  \ "     *\n" .
+  \ "     * @param %varname% the value to set.\n" . 
+  \ "     */\n" .
+  \ "    public function %funcname%($%varname%)\n" .
+  \ "    {\n" .
+  \ "        $this->%varname% = $%varname%;\n" .
+  \ "        return $this;\n" .
+  \ "    }"
 
 "------------------------------------------------------------------------------"
 "--------------------------------- Filetypes ----------------------------------"
