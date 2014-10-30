@@ -124,6 +124,9 @@ fun! <SID>StripTrailingWhitespaces()
 endfun
 autocmd FileType php autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
+" Generate ctags for Symfony projet
+nnoremap <leader>ct :!ctags -R --languages=php --php-kinds=cif --exclude=.git/* --exclude=app/* --exclude=bin/* --exclude=web/* --exclude=tests/* --exclude=*/Test/* --exclude=*/Tests/* --exclude=*test* --exclude=*Form/Type* --exclude=vendor/*/vendor
+
 "  Shortcuts
 ia vd var_dump();
 ia vdd var_dump();die;
