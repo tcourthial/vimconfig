@@ -13,3 +13,6 @@
 [submodule "bundle/tabular"]
 	path = bundle/tabular
 	url = git@github.com:godlygeek/tabular.git
+[submodule "bundle/phpcomplete.vim"]
+	path = bundle/phpcomplete.vim
+	url = git@github.com:shawncplus/phpcomplete.vim.git

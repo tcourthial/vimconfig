@@ -108,7 +108,8 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
 "--------------------------------- Php ----------------------------------------"
 "Autocompletion
-autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
+let g:phpcomplete_index_composer_command="composer"
 
 "Comment current line
 nnoremap <leader>/ <esc>ma0i//<esc>`a
@@ -124,8 +125,15 @@ fun! <SID>StripTrailingWhitespaces()
 endfun
 autocmd FileType php autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
-" Generate ctags for Symfony projet
-nnoremap <leader>ct :!ctags -R --languages=php --php-kinds=cif --exclude=.git/* --exclude=app/* --exclude=bin/* --exclude=web/* --exclude=tests/* --exclude=*/Test/* --exclude=*/Tests/* --exclude=*test* --exclude=*Form/Type* --exclude=vendor/*/vendor
+" Generate ctags for Symfony project
+" nnoremap <leader>ct :!ctags -R --languages=php --php-kinds=cif --exclude=.git/* --exclude=app/* --exclude=bin/* --exclude=web/* --exclude=tests/* --exclude=*/Test/* --exclude=*/Tests/* --exclude=*test* --exclude=*Form/Type* --exclude=vendor/*/vendor
+"
+" Generate ctags for php project, with patched ctags
+nnoremap <leader>ct :!ctags -R --fields=+aimS --languages=php
+
+" Autoclose preview window when leaving insert mode / when moving in insert mode
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 "  Shortcuts
 ia vd var_dump();
