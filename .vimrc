@@ -1,9 +1,29 @@
 "------------------------------------------------------------------------------"
 "--------------------------------- Global -------------------------------------"
 "------------------------------------------------------------------------------"
-"Pathogen to manage plugins
-call pathogen#infect()
+"
+"--------------------------------- Vundle -------------------------------------"
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'shawncplus/phpcomplete.vim'
+Plugin 'godlygeek/tabular'
+Plugin 'groenewege/vim-less'
+Plugin 'evidens/vim-twig'
+Plugin 'tobyS/vmustache'
+Plugin 'tobyS/pdv'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+"--------------------------------- General ------------------------------------"
 "Indent
 set smartindent
 set autoindent
@@ -31,7 +51,6 @@ set smartcase
 " My custom color scheme
 colorscheme jite
 
-"
 "--------------------------------- Global remap -------------------------------"
 "remap leader
 let mapleader = ','
@@ -49,24 +68,39 @@ nnoremap <leader>mm :set mouse=<cr>
 " Remove trailing spaces
 nnoremap <leader>s :%s/\s\+$//<CR>
 
-"------------------------------------------------------------------------------"
 "--------------------------------- Vimrc --------------------------------------"
-"------------------------------------------------------------------------------"
 "Opens vimrc in a new tab
 nnoremap <leader>ev :tabnew $MYVIMRC<cr>
 "Applies changes to vimrc so they are usable immediately
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
-"------------------------------------------------------------------------------"
-"--------------------------------- Plugins ------------------------------------"
-"------------------------------------------------------------------------------"
-"
-"--------------------------------- NerdTree -----------------------------------"
+"--------------------------------- General Plugins config ---------------------"
 nnoremap <leader>n :NERDTreeToggle<cr>
-"Snipmate
 filetype plugin on
 
-"--------------------------------- PHP GetSet ---------------------------------"
+"------------------------------------------------------------------------------"
+"--------------------------------- Filetypes ----------------------------------"
+"------------------------------------------------------------------------------"
+
+"--------------------------------- XML ----------------------------------------"
+" Indent xml
+au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
+
+"--------------------------------- HTML/CSS/JS --------------------------------"
+" Autocompletion
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+
+"--------------------------------- Php ----------------------------------------"
+" Autocompletion
+autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
+let g:phpcomplete_index_composer_command="composer"
+
+" PHP documenter
+let g:pdv_template_dir = $HOME ."/.vim/tools/pdv/templates"
+nnoremap <buffer> <leader>d :call pdv#DocumentCurrentLine()<CR>
+
 let b:phpgetset_getterTemplate = 
   \ "    \n" .
   \ "    /**\n" .
@@ -91,30 +125,6 @@ let b:phpgetset_setterTemplate =
   \ "        $this->%varname% = $%varname%;\n" .
   \ "        return $this;\n" .
   \ "    }"
-
-"------------------------------------------------------------------------------"
-"--------------------------------- Filetypes ----------------------------------"
-"------------------------------------------------------------------------------"
-
-"--------------------------------- XML ----- ----------------------------------"
-" Indent xml
-au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
-
-"--------------------------------- HTML/CSS/JS --------------------------------"
-"Autocompletion
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-
-"--------------------------------- Php ----------------------------------------"
-"Autocompletion
-autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
-let g:phpcomplete_index_composer_command="composer"
-
-"Comment current line
-nnoremap <leader>/ <esc>ma0i//<esc>`a
-"Uncomment current line
-nnoremap <leader>: <esc>ma0xx`a
 
 " Autoremove trailing spaces on save
 fun! <SID>StripTrailingWhitespaces()
