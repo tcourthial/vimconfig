@@ -13,16 +13,12 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'shawncplus/phpcomplete.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'groenewege/vim-less'
 Plugin 'evidens/vim-twig'
 Plugin 'tobyS/vmustache'
 Plugin 'tobyS/pdv'
-Bundle 'Shougo/vimproc'
-Plugin 'Shougo/unite.vim'
-"Plugin 'shawncplus/phpcomplete.vim'
-Plugin 'm2mdas/phpcomplete-extended'
-Plugin 'm2mdas/phpcomplete-extended-symfony'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -98,9 +94,7 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
 "--------------------------------- Php ----------------------------------------"
 " Autocompletion
-let g:acp_enableAtStartup = 0
-let g:neocomplete#enable_at_startup = 1
-autocmd FileType php setlocal omnifunc=phpcomplete_extended#CompletePHP
+autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
 let g:phpcomplete_index_composer_command="composer"
 
 " PHP documenter
