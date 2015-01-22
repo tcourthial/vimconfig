@@ -19,6 +19,9 @@ Plugin 'groenewege/vim-less'
 Plugin 'evidens/vim-twig'
 Plugin 'tobyS/vmustache'
 Plugin 'tobyS/pdv'
+Plugin 'Shougo/unite.vim'
+Plugin 'tsukkee/unite-tag'
+Plugin 'docteurklein/php-getter-setter.vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -162,6 +165,10 @@ function! SynStack()
     endif
     echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
+
+"----------------------------- Unite ------------------------------------------"
+nnoremap <leader>ut :Unite tag -input=
+let g:unite_source_tag_max_fname_length=80
 
 "------------------------------------------------------------------------------"
 "----------------------------- Useful Things ----------------------------------"
