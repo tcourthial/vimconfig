@@ -22,6 +22,8 @@ Plugin 'tobyS/pdv'
 Plugin 'Shougo/unite.vim'
 Plugin 'tsukkee/unite-tag'
 Plugin 'docteurklein/php-getter-setter.vim'
+Plugin 'spf13/vim-autoclose'
+Plugin 'altercation/vim-colors-solarized.git'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -52,7 +54,8 @@ set ignorecase
 set smartcase
 
 " My custom color scheme
-colorscheme jite
+syntax enable
+colorscheme jite_solarized
 
 "--------------------------------- Global remap -------------------------------"
 "remap leader
@@ -102,7 +105,7 @@ let g:phpcomplete_index_composer_command="composer"
 
 " PHP documenter
 let g:pdv_template_dir = $HOME ."/.vim/tools/pdv/templates"
-nnoremap <buffer> <leader>d :call pdv#DocumentCurrentLine()<CR>
+nnoremap <buffer> <leader>pd :call pdv#DocumentCurrentLine()<CR>
 
 let b:phpgetset_getterTemplate = 
   \ "    \n" .
@@ -159,15 +162,13 @@ let php_sql_query = 1 "Coloration des requetes SQL
 "------------------------------------------------------------------------------"
 "
 " Checks the syntax group the current word belongs to
-function! SynStack()
-    if !exists("*synstack")
-        return
-    endif
-    echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
+nnoremap <leader>syn :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+            \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+            \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 "----------------------------- Unite ------------------------------------------"
 nnoremap <leader>ut :Unite tag -input=
+nnoremap <leader>uu :Unite<CR>
 let g:unite_source_tag_max_fname_length=80
 
 "------------------------------------------------------------------------------"
