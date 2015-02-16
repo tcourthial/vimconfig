@@ -55,6 +55,8 @@ set smartcase
 
 " My custom color scheme
 syntax enable
+let g:solarized_termcolors=16
+se t_Co=16
 colorscheme jite_solarized
 
 "--------------------------------- Global remap -------------------------------"
