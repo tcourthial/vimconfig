@@ -12,6 +12,7 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'shawncplus/phpcomplete.vim'
 Plugin 'godlygeek/tabular'
